@@ -13,7 +13,7 @@ public class Stage1Test  {
       while(operator.takeAction(time)) {
          
          System.out.println(time+" "+l_Joy.toString()+" "+r_Joy.toString());
-         time+=0.1;
+         time= (float) (time + 0.1);
       }
    }
 }

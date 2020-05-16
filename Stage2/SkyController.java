@@ -13,7 +13,8 @@ public class SkyController {
       // to be coded
    }
    public void takeAction(float time) {
-      // to be coded
+     // to be coded
+
    }
    private Drone drone;
    private Joystick lStick, rStick;

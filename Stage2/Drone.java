@@ -1,6 +1,18 @@
+import sun.java2d.loops.MaskBlit;
+import java.lang.Math;
+
 public class Drone {
    public Drone () {
-      // to be coded
+      state=LANDED;
+      time=0.0f;
+      fSpeed=0.0f;
+      vSpeed=0.0f;
+      sSpeed=0.0f;
+      rSpeed=0.0f;
+      x=0;
+      y=0;
+      h=0;
+      direction=0.0f;
    }
    static {
       MAX_F_SPEED = MAX_S_SPEED = 5; // [m/s]
@@ -11,20 +23,32 @@ public class Drone {
    public void takeAction(float t){
       float delta_t = t-time;
       switch (state) {
-      case TAKING_OFF:  //drone moves only upwards in this stage
-          // to be coded
+      case TAKING_OFF:
+          h+=MAX_V_SPEED*4;
+          break;
       case FLYING:
-          // to be coded
+          x+=delta_t*fSpeed;
+          y+=delta_t*sSpeed;
+          h+=delta_t*vSpeed;
+          direction=delta_t*rSpeed;
+          break;
       case LANDING: //drone moves only downwards in this stage
-          // to be coded
+         while(h>0){
+            h-=MAX_V_SPEED*0.05;
+         }
+         break;
       }
       time = t;
    }
    public void setRotationSpeed(float percentage) {
-      // to be coded
+      
+      rSpeed=MAX_R_SPEED*percentage;
+
    }
    public void setFlySpeed(float verPer, float forwPer, float sidePer) {
-      // to be coded
+      fSpeed=forwPer*MAX_F_SPEED;
+      vSpeed=verPer*MAX_V_SPEED;
+      sSpeed=sidePer*MAX_S_SPEED;
    }
    public float getHeight() {
       return h;

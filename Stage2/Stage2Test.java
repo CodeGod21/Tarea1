@@ -14,13 +14,13 @@ public class Stage2Test  {
       while(operator.takeAction(time)) {
          skyController.takeAction(time);
          drone.takeAction(time);
-         System.out.println(time+ ",\t"+drone);
+         System.out.println(time+ ",\t"+drone.toString());
          time+=0.1;
       }
       skyController.pushTakeOff_Land(); // to land
       while (drone.getHeight() >=0) {
          drone.takeAction(time);
-         System.out.println(time+ ",\t"+drone);
+         System.out.println(time+ ",\t"+drone.toString());
          time+=0.1;
       }
    }

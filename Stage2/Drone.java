@@ -1,9 +1,9 @@
-import sun.java2d.loops.MaskBlit;
+//import sun.java2d.loops.MaskBlit;
 import java.lang.Math;
 
 public class Drone {
    public Drone () {
-      state=LANDED;
+      state=state.LANDED;
       time=0.0f;
       fSpeed=0.0f;
       vSpeed=0.0f;
@@ -24,7 +24,7 @@ public class Drone {
       float delta_t = t-time;
       switch (state) {
       case TAKING_OFF:
-          h+=MAX_V_SPEED*4;
+            h+=MAX_V_SPEED*0.05;
           break;
       case FLYING:
           x+=delta_t*fSpeed;
@@ -33,9 +33,7 @@ public class Drone {
           direction=delta_t*rSpeed;
           break;
       case LANDING: //drone moves only downwards in this stage
-         while(h>0){
-            h-=MAX_V_SPEED*0.05;
-         }
+          h-=MAX_V_SPEED*0.01;
          break;
       }
       time = t;
@@ -54,7 +52,7 @@ public class Drone {
       return h;
    }
    public String toString() {
-      return x + ", " + y + ", " + h;
+      return (String.format("%.2f",x) + ", " +String.format("%.2f",y)  + ", " +String.format("%.2f",h)) ;
    }
    public void takeOff() {
       if (state==State.LANDED)
@@ -63,6 +61,11 @@ public class Drone {
    public void land() {
       if (state==State.FLYING)
          state = State.LANDING;
+   }
+   public void fly(){  //se pone a volar
+      if(state==State.TAKING_OFF){
+            state=State.FLYING;
+      }
    }
    private State state;
    private float time;

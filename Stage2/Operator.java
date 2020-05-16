@@ -5,8 +5,8 @@ import javax.management.openmbean.OpenDataException;
 public class Operator {
    public Operator (Scanner in, SkyController skyController){
       inFile = in;
-      l_Joystick = skyController.Joystick.getLeftStick();
-      r_Joystick = skyController.Joystick.getRigthStick();
+      l_Joystick = skyController.getLeftStick();
+      r_Joystick = skyController.getRightStick();
       inFile.nextLine(); // skip description line
       t = inFile.nextFloat();
    }

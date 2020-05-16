@@ -9,7 +9,7 @@ public class Stage1Test  {
    public static void main (String[] arg) throws IOException {
       Locale.setDefault(Locale.US);  // to read number in US format, like 1.5 (not like 1,5)
       Scanner in = new Scanner(new File(arg[0]));
-      BufferedWriter writer = new BufferedWriter(new FileWriter("salida.csv"));
+      BufferedWriter writer = new BufferedWriter(new FileWriter(arg[1]);
       writer.append("t,jih,jiv,jdh,jdv");
       writer.newLine();
       float time = 0.0f;
@@ -24,9 +24,8 @@ public class Stage1Test  {
          System.out.println(Math.floor(time*10)/10 +" "+l_Joy.toString()+" "+r_Joy.toString());
          time= (float) (time + 0.1);
       }
-      
+      write.flush();
       writer.close();
-      System.out.println("pen0");
       
    }
    

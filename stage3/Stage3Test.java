@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.Locale;
 import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 public class Stage3Test  {
    static {
@@ -12,7 +13,7 @@ public class Stage3Test  {
    public static void main (String[] arg) throws IOException {
       Scanner in = new Scanner(new File(arg[0]));
       float time, nextPrintTime;
-            time=nextPrintTime = getCurrentTime();
+            time=nextPrintTime = 0;
       Drone drone = new Drone();
       SkyController skyController = new SkyController(drone);
       Joysticks joysticks = new Joysticks(skyController);
@@ -24,21 +25,23 @@ public class Stage3Test  {
       actionables.add(skyController);
       actionables.add(drone);
 
+      skyController.pushTakeOff_Land ();//aqui deberia subir hasta 10m 
+
+
       do {
-         
          for( Actionable device: actionables){
-            System.out.println("for actionables");
             device.takeAction(time);
-            //System.out.println("pen1");
          }
          
-         if (time >= nextPrintTime){
-            System.out.println("PENE");
-            System.out.println(time+ ",\t"+drone.toString());
-            nextPrintTime+=0.5;
-         }
+      //   if (time >= nextPrintTime){
+      //      System.out.println(String.format("%.1f",time)+ ",\t"+drone.toString());
+      //      nextPrintTime+=0.5;
+      //   }
+
+         System.out.println(String.format("%.1f",time)+ ",\t"+drone.toString());
          sleepFor(0.1f);  // let 0.1 [s] pass to run at real time.
-         time=getCurrentTime();
+         time+=0.1;
+         System.out.println("EL TIEMPO ES: "+String.format("%.1f",time));
       } while (drone.getState()!=State.LANDED);
 
 
@@ -59,10 +62,11 @@ public class Stage3Test  {
       do {  // user flies the drone until the drone lands.
          for( Actionable device: actionables)
             device.takeAction(time);
-         if (time >= nextPrintTime){
-            System.out.print("\n" + time+ ",\t"+drone.toString() + "; move: " );
-            nextPrintTime+=0.5;
-         }
+       //  if (time >= nextPrintTime){
+       //     System.out.print("\n" + time+ ",\t"+drone.toString() + "; move: " );
+       //     nextPrintTime+=0.5;
+       //  }
+         System.out.print("\n" + time+ ",\t"+drone.toString() + "; move: " );
          sleepFor(0.1f);
          time=getCurrentTime();
       } while (drone.getState()!=State.LANDED);

@@ -26,7 +26,7 @@ public class Joysticks extends InputDevice {
    }
    public void pushTakeOff (){
       //System.out.println("joysticks pushtakeoff");
-      //pushTakeOff_Land();
+      this.controller.pushTakeOff_Land();
       //controller.pushTakeOff();
    }
    public void cambiobuttonaLANDING(){

@@ -20,7 +20,8 @@ public class SkyController implements Actionable {
    }
    public void pushTakeOff_Land () {
       drone.takeOff();
-      //drone.takeAction(0);
+      button=State.TAKING_OFF;
+      drone.takeAction(0);
       //drone.fly();//vuela
       
    }
@@ -34,6 +35,7 @@ public class SkyController implements Actionable {
    }
 
    public void pushLanding(){
+      System.out.println("DEVICE.BUTTON: "+device.button);
       if (device.button==State.LANDED){
          device.button=State.FLYING;
          drone.takeOff();

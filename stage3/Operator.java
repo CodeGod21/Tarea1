@@ -11,28 +11,36 @@ public class Operator implements Actionable {
       inFile.nextLine(); // skip description line
       t = inFile.nextFloat();
       b=0;
-      joysticks.pushTakeOff();
+      ///joysticks.pushTakeOff();
+      //newTime=0;
    }
    public void takeAction(float time){
       float f;
-      if (time > t&& b==0) {
-         System.out.println("Entro take action");
-         System.out.println("tiempo adentro: "+time);
+      
+      if (time > t ) {
+         System.out.println("pen: "+t);
+        // System.out.println(l_Joystick.getHorPos());
+        if(l_Joystick.getHorPos()==0.0&&l_Joystick.getVerPos()==0.0 && r_Joystick.getHorPos()==0.0 && r_Joystick.getVerPos()==0.0&&time>2){
+         joysticks.cambiobuttonaLANDING();
+         System.out.println("No mas lineas");
+         return;  
+        }
+        
          l_Joystick.setHorPos(f=inFile.nextFloat());
          l_Joystick.setVerPos(f=inFile.nextFloat());
          r_Joystick.setHorPos(f=inFile.nextFloat());
          r_Joystick.setVerPos(f=inFile.nextFloat());
-         if (l_Joystick.getHorPos()==0.0&&l_Joystick.getVerPos()==0.0 && r_Joystick.getHorPos()==0.0 && r_Joystick.getVerPos()==0.0&&t>2){
-            joysticks.cambiobuttonaLANDING();
-            System.out.println("No mas lineas");
+        
+        //if (l_Joystick.getHorPos()==0.0&&l_Joystick.getVerPos()==0.0 && r_Joystick.getHorPos()==0.0 && r_Joystick.getVerPos()==0.0&&time>2){
+           
+         if(t!=2.5){
+            t=inFile.nextFloat();
 
-            b=1;
-            return;  
-           }
-         t=inFile.nextFloat();
+         } 
+         
          
        }
-     
+     //  newTime+=0.1;
       return;
    }
    private float t;
@@ -40,4 +48,5 @@ public class Operator implements Actionable {
    private Joystick l_Joystick, r_Joystick;
    private Joysticks joysticks;
    private int b;
+   private float newTime;
 }

@@ -1,5 +1,10 @@
 //import sun.java2d.loops.MaskBlit;
 import java.lang.Math;
+import java.io.*;
+import java.util.Scanner;
+import java.util.Locale;
+import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 public class Drone implements Actionable{
    public Drone () {
@@ -21,16 +26,17 @@ public class Drone implements Actionable{
       TAKEOFF_LANDING_SPEED = 1; // [m/s]
    }
    public void takeAction(float t){
-      System.out.println("actionable drone");
       float delta_t = t-time;
       System.out.println("dron estado: "+getState());
       switch (state) {
       case TAKING_OFF:
-            System.out.println("está taking off");
+            while(h<10){
             h+=MAX_V_SPEED*0.05;
-            if(h>10){
-               state=state.FLYING;
+            sleepFor(0.1f);
+            System.out.println(toString());
             }
+               state=state.FLYING;
+            
           break;
       case FLYING:
           direction=delta_t*rSpeed;
@@ -82,7 +88,12 @@ public class Drone implements Actionable{
       return state;
    }
 
-   
+   public static void sleepFor(float time) { // to let user react
+      try {
+         Thread.sleep((int)(time*1000));
+      } catch (InterruptedException e){
+      }
+   }
    private State state;
    private float time;
    private float fSpeed, vSpeed, sSpeed, rSpeed;

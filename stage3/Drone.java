@@ -40,7 +40,7 @@ public class Drone implements Actionable{
           
           break;
       case LANDING: //drone moves only downwards in this stage
-          h-=MAX_V_SPEED*0.01;
+          h-=TAKEOFF_LANDING_SPEED*0.1;
           if(h<=0){
             state=state.LANDED;
          }

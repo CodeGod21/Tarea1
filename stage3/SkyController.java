@@ -34,7 +34,16 @@ public class SkyController implements Actionable {
    }
 
    public void pushLanding(){
-      drone.land();
+      if (device.button==State.LANDED){
+         device.button=State.FLYING;
+         drone.takeOff();
+      //Cambiara los bottones de State y tambien cambiara al drone
+
+      }
+      if(device.button==State.FLYING){
+         device.button=State.LANDING;
+         drone.land();
+      }
    }
 
 //   public void setButtomTrue(){

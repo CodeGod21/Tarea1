@@ -1,6 +1,7 @@
 public class Joysticks extends InputDevice {
    public Joysticks (SkyController controller) {
       super(controller);
+      this.controller=controller;
       rStick = new Joystick();
       lStick = new Joystick();
    }
@@ -24,11 +25,13 @@ public class Joysticks extends InputDevice {
       return rStick;
    }
    public void pushTakeOff (){
-      System.out.println("joysticks pushtakeoff");
-      pushTakeOff_Land();
+      //System.out.println("joysticks pushtakeoff");
+      //pushTakeOff_Land();
+      //controller.pushTakeOff();
    }
    public void cambiobuttonaLANDING(){
-      button=State.LANDING;
+      this.controller.pushLanding();
    }
    private Joystick lStick, rStick;
+   private SkyController controller;
 }

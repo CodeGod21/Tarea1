@@ -15,7 +15,7 @@ public class Operator implements Actionable {
    }
    public void takeAction(float time){
       float f;
-      if (time > t) {
+      if (time > t&& b==0) {
          System.out.println("Entro take action");
          System.out.println("tiempo adentro: "+time);
          l_Joystick.setHorPos(f=inFile.nextFloat());

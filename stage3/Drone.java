@@ -21,9 +21,12 @@ public class Drone implements Actionable{
       TAKEOFF_LANDING_SPEED = 1; // [m/s]
    }
    public void takeAction(float t){
+      System.out.println("actionable drone");
       float delta_t = t-time;
+      System.out.println("dron estado: "+getState());
       switch (state) {
       case TAKING_OFF:
+            System.out.println("está taking off");
             h+=MAX_V_SPEED*0.05;
             if(h>10){
                state=state.FLYING;

@@ -24,6 +24,7 @@ public class Joysticks extends InputDevice {
       return rStick;
    }
    public void pushTakeOff (){
+      System.out.println("joysticks pushtakeoff");
       pushTakeOff_Land();
    }
    public void cambiobuttonaLANDING(){

@@ -27,7 +27,7 @@ public class Stage3Test  {
       do {
          
          for( Actionable device: actionables){
-            System.out.println(time);
+            System.out.println("for actionables");
             device.takeAction(time);
             //System.out.println("pen1");
          }

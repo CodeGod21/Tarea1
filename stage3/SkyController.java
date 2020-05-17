@@ -20,11 +20,14 @@ public class SkyController implements Actionable {
    }
    public void pushTakeOff_Land () {
       drone.takeOff();
-      drone.takeAction(0);
+      //drone.takeAction(0);
       //drone.fly();//vuela
       
    }
    public void takeAction(float time) {
+      if(device.button==State.TAKING_OFF){
+         this.drone.takeOff();
+      }
       this.drone.setFlySpeed(device.getVerticalPos(), device.getForwardPos(),device.getSidewaysPos() );
       this.drone.setRotationSpeed(device.getRotationPos());
 

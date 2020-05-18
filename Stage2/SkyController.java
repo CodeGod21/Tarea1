@@ -3,8 +3,6 @@ public class SkyController {
       this.drone = drone;
       lStick=new Joystick();
       rStick=new Joystick();
-      //button=State.LANDED();
-      // to be coded
    }
    public Joystick getLeftStick(){
       return lStick;
@@ -13,9 +11,10 @@ public class SkyController {
       return rStick;
    }
    public void pushTakeOff_Land () {
+      //hacemos que el drone empiece a funcionar.
       drone.takeOff();
       drone.takeAction(0);
-      //drone.fly();//vuela
+      
       
    }
    public void takeAction(float time) {
@@ -30,6 +29,5 @@ public class SkyController {
 
    private Drone drone;
    private Joystick lStick, rStick;
-   //private State button;
 }
 

@@ -33,15 +33,10 @@ public class Stage3Test  {
             device.takeAction(time);
          }
          
-      //   if (time >= nextPrintTime){
-      //      System.out.println(String.format("%.1f",time)+ ",\t"+drone.toString());
-      //      nextPrintTime+=0.5;
-      //   }
-
          System.out.println(String.format("%.1f",time)+ ",\t"+drone.toString());
          sleepFor(0.1f);  // let 0.1 [s] pass to run at real time.
          time+=0.1;
-         //System.out.println("EL TIEMPO ES: "+String.format("%.1f",time));
+         
       } while (drone.getState()!=State.LANDED);
 
 
@@ -53,7 +48,7 @@ public class Stage3Test  {
       System.out.println("Get ready to control the drone. Now you are the pilot.");
       do { // wait until the user hits space key (to take-off)
          for( Actionable device: actionables){
-            //System.out.println("entro");
+            
             device.takeAction(time);
          }
          sleepFor(0.1f);  // users need to run at real time (not at simulation time)
@@ -69,12 +64,12 @@ public class Stage3Test  {
             System.out.print("\n" + time+ ",\t"+drone.toString() + "; move: " );
             nextPrintTime+=0.5;
          }
-       //  System.out.print("\n" + time+ ",\t"+drone.toString() + "; move: " );
+      
          sleepFor(0.1f);
          time=getCurrentTime();
       } while (drone.getState()!=State.LANDED);
       System.out.print("\n" + time+ ",\t"+drone.toString() + "; \n move: ");
-    // drone.closeFile();
+   
     System.out.println("\n BUEN VUELO JOVEN");
    }
 

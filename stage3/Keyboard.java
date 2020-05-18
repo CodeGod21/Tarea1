@@ -8,8 +8,6 @@ public class Keyboard extends InputDevice implements Actionable {
       super(controller);
       this.controller=controller;
       rPos=vPos=fPos=sPos=0;
-      //l_Joystick = controller.getLeftStick();
-      //r_Joystick = controller.getRightStick();
       in = System.in;
    }
    public float getForwardPos() {
@@ -25,51 +23,55 @@ public class Keyboard extends InputDevice implements Actionable {
       return rPos;
    }
    public void takeAction(float time) {
-      //System.out.println("ENTRA AL TAKEACTION KEYBOARD");
       int c;
       try {  // reading from "in" could cause an error.
               // We will see instruction try...catch ahead in this course.
          if (in.available()>0) {// there are bytes to read without being blocked
             c=in.read();
+
+
+            // se verifica cual es el movimiento a realizar por el dron
+
             switch (c) {
                case 'w': vPos+=sensibility; 
                          if (vPos > 1) vPos=1;
-                         //l_Joystick.setVerPos(vPos);
+                        
                          break;
                case 'a': rPos-=sensibility;
                         if (rPos < -1) rPos=-1;
-                        //l_Joystick.setHorPos(rPos);
+                       
                         break;
                case 'z': vPos-=sensibility;
                         if (vPos < -1) vPos=-1;
-                        //l_Joystick.setVerPos(vPos);
+                       
                         break;
                case 's': rPos+=sensibility;
                         if (rPos > 1) rPos=1;
-                        //l_Joystick.setHorPos(rPos);
+                       
                         break;
                case 'i': fPos+=sensibility;
                         if (fPos > 1) fPos=1;
-                        //r_Joystick.setVerPos(fPos);
+                       
                         break;
                case 'j': sPos-=sensibility;
                         if (sPos < -1) sPos=-1;
-                        //r_Joystick.setHorPos(sPos);
+                       
                         break;
                case 'm': fPos-=sensibility;
                         if (fPos < -1) fPos=-1;
-                        //r_Joystick.setVerPos(fPos);
+                        
                         break;
                case 'k': sPos+=sensibility;
                         if (sPos > 1) sPos=1;
-                        //r_Joystick.setHorPos(sPos);
+                        
                         break;
+               // si se clickea el espacio se procedera a despegarlo o en su caso a aterrizarlo.
                case ' ':controller.pushLanding();
                         break;      
-              /* others cases to be coded */
+             
             }
          }
-         //System.out.println("soy un inutil");
+        
       } catch ( IOException e ) { 
          System.out.println("Input error");
          return;
@@ -79,5 +81,5 @@ public class Keyboard extends InputDevice implements Actionable {
    private float rPos, vPos, fPos, sPos;
    private static float sensibility=0.2f;
    private SkyController controller;
-  // private Joystick l_Joystick, r_Joystick;
+  
 }

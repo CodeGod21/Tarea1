@@ -24,19 +24,19 @@ public class Operator implements Actionable {
            if(b==0){
                joysticks.cambiobuttonaLANDING();
                b=1;
-               System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHH");
+               
            }
          return;  
         }
+
         
          l_Joystick.setHorPos(f=inFile.nextFloat());
          l_Joystick.setVerPos(f=inFile.nextFloat());
          r_Joystick.setHorPos(f=inFile.nextFloat());
          r_Joystick.setVerPos(f=inFile.nextFloat());
         
-        //if (l_Joystick.getHorPos()==0.0&&l_Joystick.getVerPos()==0.0 && r_Joystick.getHorPos()==0.0 && r_Joystick.getVerPos()==0.0&&time>2){
-         if(l_Joystick.getHorPos()!=0.0&&l_Joystick.getVerPos()!=0.0 && r_Joystick.getHorPos()!=0.0 && r_Joystick.getVerPos()!=0.0){
-            System.out.println("Avanza en archivo entrada.csv");
+         if(l_Joystick.getHorPos()!=0.0||l_Joystick.getVerPos()!=0.0 || r_Joystick.getHorPos()!=0.0 || r_Joystick.getVerPos()!=0.0){
+
             t=inFile.nextFloat();
          } 
       }

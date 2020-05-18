@@ -11,19 +11,18 @@ public class Operator implements Actionable {
       inFile.nextLine(); // skip description line
       t = inFile.nextFloat();
       b=0;
-      ///joysticks.pushTakeOff();
-      //newTime=0;
+     
    }
    public void takeAction(float time){
       float f;
       
       if (time > t ) {
-        // System.out.println("pen: "+t);
-        // System.out.println(l_Joystick.getHorPos());
+
+         //si se acaba el documento con 0 0 0 0 se termina la lectura del documento
         if(l_Joystick.getHorPos()==0.0&&l_Joystick.getVerPos()==0.0 && r_Joystick.getHorPos()==0.0 && r_Joystick.getVerPos()==0.0&&time>2){
-         joysticks.cambiobuttonaLANDING();
-         //System.out.println("No mas lineas");
-         return;  
+            
+            joysticks.cambiobuttonaLANDING();
+            return;  
         }
         
          l_Joystick.setHorPos(f=inFile.nextFloat());
@@ -31,16 +30,14 @@ public class Operator implements Actionable {
          r_Joystick.setHorPos(f=inFile.nextFloat());
          r_Joystick.setVerPos(f=inFile.nextFloat());
         
-        //if (l_Joystick.getHorPos()==0.0&&l_Joystick.getVerPos()==0.0 && r_Joystick.getHorPos()==0.0 && r_Joystick.getVerPos()==0.0&&time>2){
-           
-         if(t!=2.5){
+        //aceptara datos unicamente si uno de los 4 parametros es igual distinto de 0.
+         if(l_Joystick.getHorPos()!=0.0||l_Joystick.getVerPos()!=0.0 || r_Joystick.getHorPos()!=0.0 || r_Joystick.getVerPos()!=0.0){
             t=inFile.nextFloat();
 
          } 
          
          
        }
-     //  newTime+=0.1;
       return;
    }
    private float t;
@@ -48,5 +45,5 @@ public class Operator implements Actionable {
    private Joystick l_Joystick, r_Joystick;
    private Joysticks joysticks;
    private int b;
-   private float newTime;
+  
 }

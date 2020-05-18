@@ -30,14 +30,14 @@ public class SkyController implements Actionable {
       if(device.button==State.TAKING_OFF){
          this.drone.takeOff();
       }
-      System.out.println("pepepeppe"+device.getForwardPos());
+      
       this.drone.setFlySpeed(device.getVerticalPos(), device.getForwardPos(),device.getSidewaysPos() );
       this.drone.setRotationSpeed(device.getRotationPos());
 
    }
 
    public void pushLanding(){
-      System.out.println("ELLLLLLLLL ESTADOOOOOOOO ES: "+device.button);
+      
      // System.out.println("DEVICE.BUTTON: "+device.button);
      if(device.button==State.FLYING){
       device.button=State.LANDING;
@@ -55,7 +55,7 @@ public class SkyController implements Actionable {
       //System.out.println("ELLLLLLLLL ESTADOOOOOOOO ES: "+device.button);
       
      
-         System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+         
          device.button=State.LANDING;
          drone.land();
          device.button=State.LANDED;

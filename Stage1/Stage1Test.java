@@ -9,6 +9,7 @@ public class Stage1Test  {
       Scanner in = new Scanner(new File(arg[0]));
       File archivo= new File(arg[1]);
       archivo.createNewFile();
+      /*Creacion del documento*/
       FileWriter doc= new FileWriter(archivo);
       
       float time = 0.0f;
@@ -18,6 +19,7 @@ public class Stage1Test  {
       DecimalFormat num= new DecimalFormat("#0.0");
       while(operator.takeAction(time)) {
          
+         /*Se comienzan a escribit los datos en el documento*/
          System.out.println(String.format("%.1f",time)+" "+l_Joy.toString()+" "+r_Joy.toString());
          doc.write(String.format("%.1f",time)+" "+l_Joy.toString()+" "+r_Joy.toString()+"\n");
          time= (float) (time + 0.1);

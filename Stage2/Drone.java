@@ -23,7 +23,7 @@ public class Drone {
    public void takeAction(float t){
       float delta_t = t-time;
       switch (state) {
-      case TAKING_OFF:
+      case TAKING_OFF://el drone despega
             h+=MAX_V_SPEED*0.05;
           break;
       case FLYING:
@@ -33,7 +33,7 @@ public class Drone {
           direction=delta_t*rSpeed;
           break;
       case LANDING: //drone moves only downwards in this stage
-          h-=MAX_V_SPEED*0.01;
+          h-=MAX_V_SPEED*0.1;
          break;
       }
       time = t;

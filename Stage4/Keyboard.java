@@ -69,7 +69,6 @@ public class Keyboard extends InputDevice implements Actionable {
               /* others cases to be coded */
             }
          }
-         //System.out.println("soy un inutil");
       } catch ( IOException e ) { 
          System.out.println("Input error");
          return;
@@ -79,5 +78,5 @@ public class Keyboard extends InputDevice implements Actionable {
    private float rPos, vPos, fPos, sPos;
    private static float sensibility=0.2f;
    private SkyController controller;
-  // private Joystick l_Joystick, r_Joystick;
+  // private Joystick l_Joystick, r_Joys+tick;
 }

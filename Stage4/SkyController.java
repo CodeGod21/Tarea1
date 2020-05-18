@@ -9,6 +9,7 @@ public class SkyController implements Actionable {
       this.device = device;
    }
 
+   // se retornan los Sticks respectivamente
    public Joystick getLeftStick(){
       return lStick;
    }

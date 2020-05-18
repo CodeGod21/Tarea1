@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 import javax.management.openmbean.OpenDataException;
 
 public class Operator implements Actionable {

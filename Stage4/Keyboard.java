@@ -1,6 +1,5 @@
-import java.util.Scanner;
+
 import java.io.InputStream;
-import java.lang.ModuleLayer.Controller;
 import java.io.IOException;
 
 public class Keyboard extends InputDevice implements Actionable {

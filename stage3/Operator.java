@@ -18,11 +18,11 @@ public class Operator implements Actionable {
       float f;
       
       if (time > t ) {
-         System.out.println("pen: "+t);
+        // System.out.println("pen: "+t);
         // System.out.println(l_Joystick.getHorPos());
         if(l_Joystick.getHorPos()==0.0&&l_Joystick.getVerPos()==0.0 && r_Joystick.getHorPos()==0.0 && r_Joystick.getVerPos()==0.0&&time>2){
          joysticks.cambiobuttonaLANDING();
-         System.out.println("No mas lineas");
+         //System.out.println("No mas lineas");
          return;  
         }
         

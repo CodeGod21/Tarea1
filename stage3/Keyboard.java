@@ -25,9 +25,10 @@ public class Keyboard extends InputDevice implements Actionable {
       return rPos;
    }
    public void takeAction(float time) {
+      //System.out.println("ENTRA AL TAKEACTION KEYBOARD");
       int c;
       try {  // reading from "in" could cause an error.
- // We will see instruction try...catch ahead in this course.
+              // We will see instruction try...catch ahead in this course.
          if (in.available()>0) {// there are bytes to read without being blocked
             c=in.read();
             switch (c) {
@@ -43,7 +44,7 @@ public class Keyboard extends InputDevice implements Actionable {
                         if (vPos < -1) vPos=-1;
                         //l_Joystick.setVerPos(vPos);
                         break;
-               case 's': rPos=sensibility;
+               case 's': rPos+=sensibility;
                         if (rPos > 1) rPos=1;
                         //l_Joystick.setHorPos(rPos);
                         break;
@@ -68,6 +69,7 @@ public class Keyboard extends InputDevice implements Actionable {
               /* others cases to be coded */
             }
          }
+         //System.out.println("soy un inutil");
       } catch ( IOException e ) { 
          System.out.println("Input error");
          return;

@@ -26,6 +26,7 @@ public class SkyController implements Actionable {
       
    }
    public void takeAction(float time) {
+     // System.out.println("DEVICE.BUTTON: "+device.button);
       if(device.button==State.TAKING_OFF){
          this.drone.takeOff();
       }
@@ -35,14 +36,14 @@ public class SkyController implements Actionable {
    }
 
    public void pushLanding(){
-      System.out.println("DEVICE.BUTTON: "+device.button);
+     // System.out.println("DEVICE.BUTTON: "+device.button);
       if (device.button==State.LANDED){
          device.button=State.FLYING;
          drone.takeOff();
       //Cambiara los bottones de State y tambien cambiara al drone
 
       }
-      if(device.button==State.FLYING){
+      else if(device.button==State.FLYING){
          device.button=State.LANDING;
          drone.land();
       }

@@ -18,6 +18,7 @@ public class Drone implements Actionable{
       y=0;
       h=0;
       direction=0.0f;
+      b=0;
    }
    static {
       MAX_F_SPEED = MAX_S_SPEED = 5; // [m/s]
@@ -27,11 +28,11 @@ public class Drone implements Actionable{
    }
    public void takeAction(float t){
       float delta_t = t-time;
-      System.out.println("dron estado: "+getState());
+      
       switch (state) {
       case TAKING_OFF:
             while(h<10){
-            h+=MAX_V_SPEED*0.05;
+            h+=MAX_V_SPEED*0.1;
             sleepFor(0.1f);
             System.out.println(toString());
             }
@@ -40,13 +41,16 @@ public class Drone implements Actionable{
           break;
       case FLYING:
           direction=delta_t*rSpeed;
-          x+=delta_t*fSpeed*Math.cos(direction);
-          y+=delta_t*sSpeed*Math.sin(direction);
+         // System.out.println("Angulo qe le damos: "+direction);
+         // System.out.println("Angulo del dron: "+Math.cos(direction));
+          x+=delta_t*fSpeed*Math.cos(direction)+delta_t*fSpeed*Math.sin(direction);
+          y+=delta_t*sSpeed*Math.sin(direction)+delta_t*sSpeed*Math.cos(direction);
           h+=delta_t*vSpeed;
           
           break;
       case LANDING: //drone moves only downwards in this stage
-          h-=TAKEOFF_LANDING_SPEED*0.1;
+          h-=TAKEOFF_LANDING_SPEED*0.2;
+
           if(h<=0){
             state=state.LANDED;
          }
@@ -68,7 +72,7 @@ public class Drone implements Actionable{
       return h;
    }
    public String toString() {
-      return (String.format("%.2f",x) + ", " +String.format("%.2f",y)  + ", " +String.format("%.2f",h)) ;
+      return (String.format("%.2f",x) + ", " +String.format("%.2f",y)  + ", " +String.format("%.2f",h)+", "+String.format("%.5f", direction));
    }
    public void takeOff() {
       if (state==State.LANDED)
@@ -95,6 +99,7 @@ public class Drone implements Actionable{
       }
    }
    private State state;
+   private int b;
    private float time;
    private float fSpeed, vSpeed, sSpeed, rSpeed;
    private float direction; // angle

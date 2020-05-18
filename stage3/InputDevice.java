@@ -9,11 +9,11 @@ public abstract class InputDevice {
    public abstract float getRotationPos();
 
    public void pushTakeOff_Land () {
-      System.out.println("entra pushtake off inputdevice");
-      System.out.println("boton estaba: "+button);
+     // System.out.println("entra pushtake off inputdevice");
+     // System.out.println("boton estaba: "+button);
       switch (button) {
          case LANDED: button=State.TAKING_OFF;
-         System.out.println("boton cambió a: "+button);/* to be coded */
+         //System.out.println("boton cambió a: "+button);/* to be coded */
          case FLYING: button=State.LANDED; /* to be coded */
       }
       //button = button==State.TAKE_OFF?State.LANDING:State.TAKE_OFF;

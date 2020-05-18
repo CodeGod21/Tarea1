@@ -41,7 +41,7 @@ public class Stage3Test  {
          System.out.println(String.format("%.1f",time)+ ",\t"+drone.toString());
          sleepFor(0.1f);  // let 0.1 [s] pass to run at real time.
          time+=0.1;
-         System.out.println("EL TIEMPO ES: "+String.format("%.1f",time));
+         //System.out.println("EL TIEMPO ES: "+String.format("%.1f",time));
       } while (drone.getState()!=State.LANDED);
 
 
@@ -51,28 +51,34 @@ public class Stage3Test  {
       actionables.remove(operator);  // stop reading automatically from file
       actionables.add(keyboard);  // start reading from keyboard
       System.out.println("Get ready to control the drone. Now you are the pilot.");
-
       do { // wait until the user hits space key (to take-off)
-         for( Actionable device: actionables)
+         for( Actionable device: actionables){
+            //System.out.println("entro");
             device.takeAction(time);
+         }
          sleepFor(0.1f);  // users need to run at real time (not at simulation time)
          time=getCurrentTime();
       } while (drone.getState()!=State.TAKING_OFF);
+
       nextPrintTime = time+0.5f;
+
       do {  // user flies the drone until the drone lands.
          for( Actionable device: actionables)
             device.takeAction(time);
-       //  if (time >= nextPrintTime){
-       //     System.out.print("\n" + time+ ",\t"+drone.toString() + "; move: " );
-       //     nextPrintTime+=0.5;
-       //  }
-         System.out.print("\n" + time+ ",\t"+drone.toString() + "; move: " );
+         if (time >= nextPrintTime){
+            System.out.print("\n" + time+ ",\t"+drone.toString() + "; move: " );
+            nextPrintTime+=0.5;
+         }
+       //  System.out.print("\n" + time+ ",\t"+drone.toString() + "; move: " );
          sleepFor(0.1f);
          time=getCurrentTime();
       } while (drone.getState()!=State.LANDED);
-      System.out.print("\n" + time+ ",\t"+drone.toString() + "; move: ");
+      System.out.print("\n" + time+ ",\t"+drone.toString() + "; \n move: ");
     // drone.closeFile();
+    System.out.println("\n BUEN VUELO JOVEN");
    }
+
+
    public static float getCurrentTime(){  // time since program started in [s]
       return (float)(System.currentTimeMillis()-t0)/1000.0f;
    }

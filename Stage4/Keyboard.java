@@ -8,8 +8,6 @@ public class Keyboard extends InputDevice implements Actionable {
       super(controller);
       this.controller=controller;
       rPos=vPos=fPos=sPos=0;
-      //l_Joystick = controller.getLeftStick();
-      //r_Joystick = controller.getRightStick();
       in = System.in;
    }
    public float getForwardPos() {
@@ -25,7 +23,6 @@ public class Keyboard extends InputDevice implements Actionable {
       return rPos;
    }
    public void takeAction(float time) {
-      //System.out.println("ENTRA AL TAKEACTION KEYBOARD");
       int c;
       try {  // reading from "in" could cause an error.
               // We will see instruction try...catch ahead in this course.
@@ -78,5 +75,4 @@ public class Keyboard extends InputDevice implements Actionable {
    private float rPos, vPos, fPos, sPos;
    private static float sensibility=0.2f;
    private SkyController controller;
-  // private Joystick l_Joystick, r_Joys+tick;
 }

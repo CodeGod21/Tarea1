@@ -73,7 +73,7 @@ public class Stage4Test  {
          droneKeyboardFileWriter.write("\n"+String.format("%.1f",time)+ ",\t"+dronePilot.toString());
          droneUSMFileWriter.write("\n"+String.format("%.1f",time)+ ",\t"+drone.toString());
 
-        // System.out.println(String.format("%.1f",time)+ ",\t"+drone.toString());
+        
          sleepFor(0.1f);  // let 0.1 [s] pass to run at real time.
          time+=0.1;
    

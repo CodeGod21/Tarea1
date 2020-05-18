@@ -11,15 +11,13 @@ public class Operator implements Actionable {
       inFile.nextLine(); // skip description line
       t = inFile.nextFloat();
       b=0;
-      ///joysticks.pushTakeOff();
-      //newTime=0;
+      
    }
    public void takeAction(float time){
       float f;
       
       if (time > t ) {
-        // System.out.println("pen: "+t);
-        // System.out.println(l_Joystick.getHorPos());
+        
         if(l_Joystick.getHorPos()==0.0&&l_Joystick.getVerPos()==0.0 && r_Joystick.getHorPos()==0.0 && r_Joystick.getVerPos()==0.0&&time>2){
            if(b==0){
                joysticks.cambiobuttonaLANDING();

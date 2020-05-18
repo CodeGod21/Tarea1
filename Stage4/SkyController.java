@@ -44,7 +44,6 @@ public class SkyController implements Actionable {
       
    }
    public void pushLandingUSM(){
-   
          device.button=State.LANDING;
          drone.land();
          device.button=State.LANDED;

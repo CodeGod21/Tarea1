@@ -18,5 +18,8 @@ public class Joystick {
    public String toString() {
       return hf+","+vf;
    }
+
+
+   
    private float vf, hf;
 }

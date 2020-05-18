@@ -1,0 +1,27 @@
+JFLAGS = -g
+JC = javac
+JVM= java
+FILE=entrada.csv
+.SUFFIXES: .java .class
+.java.class:
+	$(JC) $(JFLAGS) $*.java
+
+CLASSES = \
+        Joystick.java \
+	Operator.java\
+   Drone.java\
+   SkyController.java\
+   State.java
+	
+
+MAIN = Stage2Test
+
+default: classes
+
+classes: $(CLASSES:.java=.class)
+
+run: $(MAIN).class 
+	$(JVM) $(MAIN) $(FILE)
+
+clean:
+	$(RM) *.class

@@ -31,35 +31,35 @@ public class Keyboard extends InputDevice implements Actionable {
             switch (c) {
                case 'w': vPos+=sensibility; 
                          if (vPos > 1) vPos=1;
-                         //l_Joystick.setVerPos(vPos);
+
                          break;
                case 'a': rPos-=sensibility;
                         if (rPos < -1) rPos=-1;
-                        //l_Joystick.setHorPos(rPos);
+                        
                         break;
                case 'z': vPos-=sensibility;
                         if (vPos < -1) vPos=-1;
-                        //l_Joystick.setVerPos(vPos);
+                        
                         break;
                case 's': rPos+=sensibility;
                         if (rPos > 1) rPos=1;
-                        //l_Joystick.setHorPos(rPos);
+                       
                         break;
                case 'i': fPos+=sensibility;
                         if (fPos > 1) fPos=1;
-                        //r_Joystick.setVerPos(fPos);
+                       
                         break;
                case 'j': sPos-=sensibility;
                         if (sPos < -1) sPos=-1;
-                        //r_Joystick.setHorPos(sPos);
+                       
                         break;
                case 'm': fPos-=sensibility;
                         if (fPos < -1) fPos=-1;
-                        //r_Joystick.setVerPos(fPos);
+                       
                         break;
                case 'k': sPos+=sensibility;
                         if (sPos > 1) sPos=1;
-                        //r_Joystick.setHorPos(sPos);
+                        
                         break;
                case ' ':controller.pushLanding();
                         break;      

@@ -2,10 +2,7 @@ public class SkyController implements Actionable {
    public SkyController (Drone drone) {
       this.drone = drone;
       button = State.TAKING_OFF;
-     // lStick=new Joystick();
-     // rStick=new Joystick();
-     // button=false;
-      // to be coded
+   
    }
 
    public void setInputDevice(InputDevice device){
@@ -21,12 +18,9 @@ public class SkyController implements Actionable {
    public void pushTakeOff_Land () {
       drone.takeOff();
       button=State.TAKING_OFF;
-     // drone.takeAction(0);
-      //drone.fly();//vuela
       
    }
    public void takeAction(float time) {
-     // System.out.println("DEVICE.BUTTON: "+device.button);
       if(device.button==State.TAKING_OFF){
          this.drone.takeOff();
       }
@@ -37,8 +31,6 @@ public class SkyController implements Actionable {
    }
 
    public void pushLanding(){
-      
-     // System.out.println("DEVICE.BUTTON: "+device.button);
      if(device.button==State.FLYING){
       device.button=State.LANDING;
       drone.land();
@@ -52,30 +44,14 @@ public class SkyController implements Actionable {
       
    }
    public void pushLandingUSM(){
-      //System.out.println("ELLLLLLLLL ESTADOOOOOOOO ES: "+device.button);
-      
-     
-         
+   
          device.button=State.LANDING;
          drone.land();
          device.button=State.LANDED;
      
    }
 
-//   public void setButtomTrue(){
-//      //cambiar estado dron a Takeoff
-//      drone.takeOff();
-//      button=true;
-//   }
-//   public void setButtomFalse(){
-      //cambair a aterrizar
- //     drone.land();
- //     button=false;
- //  }
 
-// public Boolean getButton(){
-//   return button;
-//   }
    private Drone drone;
    private Joystick lStick, rStick;
    private State button;

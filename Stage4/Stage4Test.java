@@ -76,7 +76,6 @@ public class Stage4Test  {
         // System.out.println(String.format("%.1f",time)+ ",\t"+drone.toString());
          sleepFor(0.1f);  // let 0.1 [s] pass to run at real time.
          time+=0.1;
-         //System.out.println("EL TIEMPO ES: "+String.format("%.1f",time));
    
       } while (drone.getState()!=State.LANDED || dronePilot.getState()!=State.LANDED);
      

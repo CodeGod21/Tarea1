@@ -71,7 +71,7 @@ public class Drone implements Actionable{
       return h;
    }
    public String toString() {
-      return (String.format("%.2f",x) + "," +String.format("%.2f",y)  + "," +String.format("%.2f",h)+".");
+      return (String.format("%.2f",x) + "," +String.format("%.2f",y)  + "," +String.format("%.2f",h));
    }
    public void takeOff() {
       if (state==State.LANDED)

@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
 
-public class Stage3Test  {
+public class Stage4Test  {
    static {
       Locale.setDefault(Locale.US);
       t0=System.currentTimeMillis();  // time in ms since app 1970.
@@ -34,10 +34,12 @@ public class Stage3Test  {
       Joysticks joysticks = new Joysticks(skyController);
       Joysticks joysticksPilot= new Joysticks(skyControllerPilot);
 
-      skyController.setInputDevice(joysticks);
-      skyControllerPilot.setInputDevice(joysticksPilot);
+      
 
       Keyboard keyboardPilot = new Keyboard(skyControllerPilot);
+
+      skyController.setInputDevice(joysticks);
+      skyControllerPilot.setInputDevice(keyboardPilot);
       
       
       Operator operator = new Operator(in, joysticks);
@@ -64,24 +66,27 @@ public class Stage3Test  {
          }
          
          if (time >= nextPrintTime){
-            System.out.println(String.format("%.1f",time)+ ",\t"+drone.toString());
+            System.out.println("Dron: "+String.format("%.1f",time)+ ",\t"+drone.toString());
+            System.out.println("DronPilot: "+String.format("%.1f",time)+ ",\t"+dronePilot.toString());
             nextPrintTime+=0.5;
          }
-         droneKeyboardFileWriter.write(String.format("%.1f",time)+ ",\t"+dronePilot.toString());
-         droneUSMFileWriter.write(String.format("%.1f",time)+ ",\t"+drone.toString());
+         droneKeyboardFileWriter.write("\n"+String.format("%.1f",time)+ ",\t"+dronePilot.toString());
+         droneUSMFileWriter.write("\n"+String.format("%.1f",time)+ ",\t"+drone.toString());
 
         // System.out.println(String.format("%.1f",time)+ ",\t"+drone.toString());
          sleepFor(0.1f);  // let 0.1 [s] pass to run at real time.
          time+=0.1;
          //System.out.println("EL TIEMPO ES: "+String.format("%.1f",time));
-      } while (drone.getState()!=State.LANDED && dronePilot.getState()!=State.LANDED);
-      droneKeyboardFileWriter.flush();
-      droneKeyboardFileWriter.close();
+         System.out.println("Dron state: "+drone.getState());
+         System.out.println("Dron Pilot state: "+dronePilot.getState());
+      } while (drone.getState()!=State.LANDED || dronePilot.getState()!=State.LANDED);
+     
+      System.out.println("pene");
      
 
      
       do {  // user flies the drone until the drone lands.
-         for( Actionable device: actionables)
+         for( Actionable device: actionablesPilot)
             device.takeAction(time);
            
 
@@ -89,15 +94,17 @@ public class Stage3Test  {
             System.out.print("\n" + time+ ",\t"+drone.toString() + "; move: " );
             nextPrintTime+=0.5;
          }
-         droneUSMFileWriter.write(String.format("%.1f",time)+ ",\t"+drone.toString());
+         droneKeyboardFileWriter.write(String.format("%.1f",time)+ ",\t"+drone.toString());
          sleepFor(0.1f);
          time=getCurrentTime();
-      } while (drone.getState()!=State.LANDED);
+      } while (dronePilot.getState()!=State.LANDED);
       System.out.print("\n" + time+ ",\t"+drone.toString() + "; \n move: ");
 
     System.out.println("\n BUEN VUELO JOVEN");
       droneUSMFileWriter.flush();
       droneUSMFileWriter.close();
+      droneKeyboardFileWriter.flush();
+      droneKeyboardFileWriter.close();
       
    }
 

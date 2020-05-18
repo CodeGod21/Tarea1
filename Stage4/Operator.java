@@ -21,7 +21,11 @@ public class Operator implements Actionable {
         // System.out.println("pen: "+t);
         // System.out.println(l_Joystick.getHorPos());
         if(l_Joystick.getHorPos()==0.0&&l_Joystick.getVerPos()==0.0 && r_Joystick.getHorPos()==0.0 && r_Joystick.getVerPos()==0.0&&time>2){
-         joysticks.cambiobuttonaLANDING();
+           if(b==0){
+               joysticks.cambiobuttonaLANDING();
+               b=1;
+               System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHH");
+           }
          return;  
         }
         
@@ -31,14 +35,15 @@ public class Operator implements Actionable {
          r_Joystick.setVerPos(f=inFile.nextFloat());
         
         //if (l_Joystick.getHorPos()==0.0&&l_Joystick.getVerPos()==0.0 && r_Joystick.getHorPos()==0.0 && r_Joystick.getVerPos()==0.0&&time>2){
-
+         if(l_Joystick.getHorPos()!=0.0&&l_Joystick.getVerPos()!=0.0 && r_Joystick.getHorPos()!=0.0 && r_Joystick.getVerPos()!=0.0){
+            System.out.println("Avanza en archivo entrada.csv");
+            t=inFile.nextFloat();
+         } 
       }
-      else{
-         t=inFile.nextFloat();
-      } 
+      
          
          
-      }
+      
       return;
    }
    private float t;

@@ -31,18 +31,17 @@ public class Drone implements Actionable{
       
       switch (state) {
       case TAKING_OFF:
-            while(h<10){
+            while(h<=10){
             h+=MAX_V_SPEED*0.1;
             sleepFor(0.1f);
             System.out.println(toString());
+
             }
-            state=state.FLYING;
+            state=State.FLYING;
             
-          break;
+            break;
       case FLYING:
           direction=delta_t*rSpeed;
-         // System.out.println("Angulo qe le damos: "+direction);
-         // System.out.println("Angulo del dron: "+Math.cos(direction));
           x+=delta_t*fSpeed*Math.cos(direction)+delta_t*fSpeed*Math.sin(direction);
           y+=delta_t*sSpeed*Math.sin(direction)+delta_t*sSpeed*Math.cos(direction);
           h+=delta_t*vSpeed;

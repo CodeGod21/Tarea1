@@ -21,7 +21,7 @@ public class SkyController implements Actionable {
    public void pushTakeOff_Land () {
       drone.takeOff();
       button=State.TAKING_OFF;
-      drone.takeAction(0);
+     // drone.takeAction(0);
       //drone.fly();//vuela
       
    }
@@ -30,32 +30,36 @@ public class SkyController implements Actionable {
       if(device.button==State.TAKING_OFF){
          this.drone.takeOff();
       }
+      System.out.println("pepepeppe"+device.getForwardPos());
       this.drone.setFlySpeed(device.getVerticalPos(), device.getForwardPos(),device.getSidewaysPos() );
       this.drone.setRotationSpeed(device.getRotationPos());
 
    }
 
    public void pushLanding(){
+      System.out.println("ELLLLLLLLL ESTADOOOOOOOO ES: "+device.button);
      // System.out.println("DEVICE.BUTTON: "+device.button);
+     if(device.button==State.FLYING){
+      device.button=State.LANDING;
+      drone.land();
+   }
       if (device.button==State.LANDED){
          device.button=State.FLYING;
          drone.takeOff();
       //Cambiara los bottones de State y tambien cambiara al drone
 
       }
-      else if(device.button==State.FLYING){
-         device.button=State.LANDING;
-         drone.land();
-      }
+      
    }
    public void pushLandingUSM(){
-      if (device.button==State.LANDED){
-
-      }
-      else if(device.button==State.FLYING){
+      //System.out.println("ELLLLLLLLL ESTADOOOOOOOO ES: "+device.button);
+      
+     
+         System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
          device.button=State.LANDING;
          drone.land();
-      }
+         device.button=State.LANDED;
+     
    }
 
 //   public void setButtomTrue(){
